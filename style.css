@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+:root {
+  --bg-color-web: #333;
+  --bg-color-left-image: rgba(52, 73, 94, 0.3);
+  --bg-color-right-image: rgba(231, 76, 60, 0.1);
+  --color-font-large: rgba(236, 240, 241, 1);
+  --color-border: rgba(236, 240, 241, 1);
+  --btn-color-left: rgba(155, 89, 182, 1);
+  --btn-color-right: rgba(52, 152, 219, 1);
+  --hover-width: 70%;
+  --other-width: 30%;
+  --transition: 1000ms;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  height: 100vh;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color-web);
+}
+
+.split {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.split.left {
+  left: 0;
+  background: url(./asus.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.split.left::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color-left-image);
+}
+
+.split.right {
+  right: 0;
+  background: url(./series-x.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.split.right::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color-right-image);
+}
+
+h1 {
+  font-size: 3rem;
+  color: var(--color-font-large);
+  white-space: nowrap;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.9);
+  transition: all 0.3s ease-in-out;
+}
+
+a {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.4rem;
+  color: var(--color-font-large);
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 1px solid var(--color-border);
+  width: 150px;
+  padding: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.split.left a:hover {
+  background-color: var(--btn-color-left);
+  border-color: var(--btn-color-left);
+}
+
+.split.right a:hover {
+  background-color: var(--btn-color-right);
+  border-color: var(--btn-color-right);
+}
+
+.split.left,
+.split.right,
+.split.left::before,
+.split.right::before {
+  transition: all var(--transition) ease-in-out;
+}
+
+.hover-left .left {
+  width: var(--hover-width);
+}
+
+.hover-left .right {
+  width: var(--other-width);
+}
+
+.hover-right .right {
+  width: var(--hover-width);
+}
+
+.hover-right .left {
+  width: var(--other-width);
+}
+
+
+@media (max-width : 800px) {
+  h1 {
+   font-size: 2.4rem;
+  }
+  a {
+    width: 120px;
+    padding: 1.1rem;
+    font-size: 1rem;
+  }
+}
